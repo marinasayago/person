@@ -25,6 +25,7 @@ public class Person {
     public Person(String name, int age, String gender){
 
         this.name = name;
+        if (age < 0) throw new NegativeAgeException("The age " + age + " is negative.");
         this.age = age;
         this.gender = gender;
     }
