@@ -15,8 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * 2. name != "" (cadena vacía)
  * 3. age < 0
  * 4. age != null
- * 4. gender != null
- * 5. not (gender == Male && gender == Female)
+ * 5. gender != null
+ * 6. not (gender == Male && gender == Female)
+ * 7. lista persons == null para método averageAgePerGender
+ * 8. lista persons es correcta para método averageAgePerGender
+ * 9. lista persons es incorrecta para método averageAgePerGender
  */
 public class PersonTest {
     Person person;
