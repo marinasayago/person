@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * Test cases
  * 1. name != null
  * 2. name != "" (cadena vacía)
- * 3. age >= 0
+ * 3. age < 0
  * 4. age != null
  * 4. gender != null
- * 5. gender == Male or gender == Female
+ * 5. not (gender == Male && gender == Female)
  */
 public class PersonTest {
     Person person;
@@ -61,6 +61,12 @@ public class PersonTest {
         person = new Person("Marina",21, "Female");
         String obtainedGender = person.gender();
         assertNotNull(obtainedGender);
+    }
+
+    @Test
+    void personGenderIsIncorrect(){
+        person = new Person("Marina",21, "None");
+        assertThrows(IncorrectGenderException.class, () -> person.gender());
     }
 
 

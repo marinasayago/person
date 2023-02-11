@@ -34,11 +34,12 @@ public class Person {
     }
 
     public int age(){
-        if (age < 0) throw new NegativeAgeException("The age " + age + " is negative.");
+        if (this.age < 0) throw new NegativeAgeException("The age " + age + " is negative.");
         return age;
     }
 
     public String gender(){
+        if(!this.gender.equals("Male") && !this.gender.equals("Female")) throw new IncorrectGenderException("The gender " + gender + " is incorrect");
         return gender;
     }
 
