@@ -20,7 +20,7 @@ public class PersonTest {
 
     @BeforeEach
     void setUp(){
-        person = new Person("Marina",21, "Female");
+
     }
 
     @AfterEach
@@ -30,24 +30,35 @@ public class PersonTest {
 
     @Test
     void personNameIsNotNull(){
+        person = new Person("Marina",21, "Female");
         String obtainedName = person.name();
         assertNotNull(obtainedName);
     }
 
     @Test
     void personNameIsNotEmpty(){
+        person = new Person("Marina",21, "Female");
         String obtainedName = person.name();
         assertNotEquals("", obtainedName);
     }
 
+
+    @Test
+    void personAgeIsNegative(){
+        person = new Person("Marina",-6, "Female");
+        assertThrows(NegativeAgeException.class, () -> person.age());
+    }
+
     @Test
     void personAgeIsNotNull(){
+        person = new Person("Marina",21, "Female");
         int obtainedAge = person.age();
         assertNotNull(obtainedAge);
     }
 
     @Test
     void personGenderIsNotNull(){
+        person = new Person("Marina",21, "Female");
         String obtainedGender = person.gender();
         assertNotNull(obtainedGender);
     }
