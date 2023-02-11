@@ -46,6 +46,12 @@ public class PersonTest {
         assertNotNull(obtainedAge);
     }
 
+    @Test
+    void personGenderIsNotNull(){
+        String obtainedGender = person.gender();
+        assertNotNull(obtainedGender);
+    }
+
 
 
 }
