@@ -30,6 +30,7 @@ public class PersonTest {
         person = null;
     }
 
+    //1. name != null
     @Test
     void personNameIsNotNull(){
         person = new Person("Marina",21, "Female");
@@ -38,6 +39,7 @@ public class PersonTest {
         assertNotNull(obtainedName);
     }
 
+    //2. name != "" (cadena vacía)
     @Test
     void personNameIsNotEmpty(){
         person = new Person("Marina",21, "Female");
@@ -47,6 +49,7 @@ public class PersonTest {
     }
 
 
+    //3. age < 0
     @Test
     void personAgeIsNegative(){
         person = new Person("Marina",-6, "Female");
@@ -54,6 +57,7 @@ public class PersonTest {
         assertThrows(NegativeAgeException.class, () -> person.age());
     }
 
+    //4. age != null
     @Test
     void personAgeIsNotNull(){
         person = new Person("Marina",21, "Female");
@@ -62,6 +66,7 @@ public class PersonTest {
         assertNotNull(obtainedAge);
     }
 
+    // * 5. gender != null
     @Test
     void personGenderIsNotNull(){
         person = new Person("Marina",21, "Female");
@@ -70,6 +75,7 @@ public class PersonTest {
         assertNotNull(obtainedGender);
     }
 
+    // * 6. not (gender == Male && gender == Female)
     @Test
     void personGenderIsIncorrect(){
         person = new Person("Marina",21, "None");
@@ -77,6 +83,7 @@ public class PersonTest {
         assertThrows(IncorrectGenderException.class, () -> person.gender());
     }
 
+    // * 7. lista persons == null para método averageAgePerGender
     @Test
     void listPersonsNullIs0(){
         person = new Person("Marina",21, "Female");
@@ -87,6 +94,7 @@ public class PersonTest {
         assertArrayEquals(expectedValue, obtainedValue);
     }
 
+    // * 8. lista persons es correcta para método averageAgePerGender
     @Test
     void listPersonsIsCorrect(){
         person = new Person("Marina",21, "Female");
@@ -102,6 +110,8 @@ public class PersonTest {
         assertNotNull(obtainedList[1]);
     }
 
+
+    // * 9. lista persons es incorrecta para método averageAgePerGender
     @Test
     void listPersonsIsIncorrect(){
         person = new Person("Marina",21, "Female");
