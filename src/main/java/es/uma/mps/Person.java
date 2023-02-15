@@ -24,8 +24,13 @@ public class Person {
 
     public Person(String name, int age, String gender){
 
+        if (name.equals("") || name.equals(null)) throw new IncorrectNameException("The name " + name + " is incorrect");
         this.name = name;
+
+        if (age < 0) throw new NegativeAgeException("The age " + age + " is negative.");
         this.age = age;
+
+        if(!gender.equals("Male") && !gender.equals("Female")) throw new IncorrectGenderException("The gender " + gender + " is incorrect");
         this.gender = gender;
     }
 
@@ -34,12 +39,10 @@ public class Person {
     }
 
     public int age(){
-        if (this.age < 0) throw new NegativeAgeException("The age " + age + " is negative.");
         return age;
     }
 
     public String gender(){
-        if(!this.gender.equals("Male") && !this.gender.equals("Female")) throw new IncorrectGenderException("The gender " + gender + " is incorrect");
         return gender;
     }
 
