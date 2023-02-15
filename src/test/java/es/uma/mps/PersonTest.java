@@ -13,13 +13,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * Test cases
  * 1. name != null
  * 2. name != "" (cadena vacía)
- * 3. age < 0
- * 4. age != null
- * 5. gender != null
- * 6. not (gender == Male && gender == Female)
- * 7. lista persons == null para método averageAgePerGender
- * 8. lista persons es correcta para método averageAgePerGender
- * 9. lista persons es incorrecta para método averageAgePerGender
+ * 3. name == null || name == ""
+ * 4. age < 0
+ * 5. age != null
+ * 6. gender != null
+ * 7. not (gender == Male && gender == Female)
+ * 8. lista persons == null para método averageAgePerGender
+ * 9. lista persons es correcta para método averageAgePerGender
  */
 public class PersonTest {
     Person person;
@@ -48,19 +48,20 @@ public class PersonTest {
         assertNotEquals("", obtainedName);
     }
 
+    //3. name == null || name == ""
     @Test
     void personNameIsEmptyOrIsNull(){
         assertThrows(IncorrectNameException.class, () -> new Person("",21, "Female"));
     }
 
 
-    //3. age < 0
+    //4. age < 0
     @Test
     void personAgeIsNegative(){
         assertThrows(NegativeAgeException.class, () -> new Person("Marina",-6, "Female"));
     }
 
-    //4. age != null
+    //5. age != null
     @Test
     void personAgeIsNotNull(){
         person = new Person("Marina",21, "Female");
@@ -69,7 +70,7 @@ public class PersonTest {
         assertNotNull(obtainedAge);
     }
 
-    // * 5. gender != null
+    //6. gender != null
     @Test
     void personGenderIsNotNull(){
         person = new Person("Marina",21, "Female");
@@ -78,13 +79,13 @@ public class PersonTest {
         assertNotNull(obtainedGender);
     }
 
-    // * 6. not (gender == Male && gender == Female)
+    //7. not (gender == Male && gender == Female)
     @Test
     void personGenderIsIncorrect(){
        assertThrows(IncorrectGenderException.class, () -> new Person("Marina",21, "None"));
     }
 
-    // * 7. lista persons == null para método averageAgePerGender
+    //8. lista persons == null para método averageAgePerGender
     @Test
     void listPersonsNullIs0(){
         person = new Person("Marina",21, "Female");
@@ -95,7 +96,7 @@ public class PersonTest {
         assertArrayEquals(expectedValue, obtainedValue);
     }
 
-    // * 8. lista persons es correcta para método averageAgePerGender
+    //9. lista persons es correcta para método averageAgePerGender
     @Test
     void listPersonsIsCorrect(){
         person = new Person("Marina",21, "Female");
