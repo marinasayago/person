@@ -48,13 +48,16 @@ public class PersonTest {
         assertNotEquals("", obtainedName);
     }
 
+    @Test
+    void personNameIsEmptyOrIsNull(){
+        assertThrows(IncorrectNameException.class, () -> new Person("",21, "Female"));
+    }
+
 
     //3. age < 0
     @Test
     void personAgeIsNegative(){
-        person = new Person("Marina",-6, "Female");
-
-        assertThrows(NegativeAgeException.class, () -> person.age());
+        assertThrows(NegativeAgeException.class, () -> new Person("Marina",-6, "Female"));
     }
 
     //4. age != null
@@ -78,9 +81,7 @@ public class PersonTest {
     // * 6. not (gender == Male && gender == Female)
     @Test
     void personGenderIsIncorrect(){
-        person = new Person("Marina",21, "None");
-
-        assertThrows(IncorrectGenderException.class, () -> person.gender());
+       assertThrows(IncorrectGenderException.class, () -> new Person("Marina",21, "None"));
     }
 
     // * 7. lista persons == null para método averageAgePerGender
@@ -111,19 +112,6 @@ public class PersonTest {
     }
 
 
-    // * 9. lista persons es incorrecta para método averageAgePerGender
-    @Test
-    void listPersonsIsIncorrect(){
-        person = new Person("Marina",21, "Female");
-        List<Person> lista = new ArrayList<Person>();
-        lista.add(person);
-        person = new Person("Lola", 33, "None");
-        lista.add(person);
-        person = new Person("Antonio", 55, "Male");
-        lista.add(person);
-
-        assertThrows(IncorrectGenderException.class, () -> person.averageAgePerGender(lista));
-    }
 
 
 
